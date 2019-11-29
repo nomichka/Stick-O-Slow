@@ -7,4 +7,5 @@ function clicked(){
       elem.value = "(/^.^)/\\(^.^\\)";
     case "(/^.^)/\\(^.^\\)":
       elem.value = "<(v.v)>";
+  }
 }  
