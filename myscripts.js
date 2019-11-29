@@ -8,4 +8,5 @@ function clicked(){
     case "(/^.^)/\\(^.^\\)":
       elem.innerHTML = "<(v.v)>";
   }
+  document.getElementById("myButton1").innerHTML = elem.innerHTML;
 }  
