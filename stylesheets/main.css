@@ -5,9 +5,12 @@ body {
   font-size: 14px;
 }
 
-/* Applies to all <h1>...</h1> elements. */
 h1 {
   font-size: 35px;
   font-weight: normal;
   margin-top: 5px;
+}
+
+#myButton1 {
+  font-family: Consolas, monospace;
 }
