@@ -1,13 +1,13 @@
 function clicked(){
   var elem = document.getElementById("myButton1");
-  switch (elem.innerHTML) {
+  switch (elem.value) {
     case "<(v.v)>":
-      elem.innerHTML = "(v0.0)v  <(^.^<)";
+      elem.value = "(v0.0)v  <(^.^<)";
       break;
     case "(v0.0)v <(^.^<)":
-      elem.innerHTML = "(/^.^)/\\(^.^\\)";
+      elem.value = "(/^.^)/\\(^.^\\)";
       break;
     case "(/^.^)/\\(^.^\\)":
-      elem.innerHTML = "<(v.v)>";
+      elem.value = "<(v.v)>";
   }
 }  
