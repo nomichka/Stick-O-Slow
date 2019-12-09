@@ -14,3 +14,7 @@ h1 {
 #myButton1 {
   font-family: Consolas, monospace;
 }
+
+p {
+  display: None;
+}
