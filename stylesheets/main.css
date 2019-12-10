@@ -12,9 +12,9 @@ h1 {
 }
 
 #myButton1 {
-  font-family: Consolas, monospace;
+  display: block;
 }
 
 p {
-  display: None;
+  display: none;
 }
