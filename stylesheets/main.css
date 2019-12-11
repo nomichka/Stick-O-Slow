@@ -12,6 +12,10 @@ h1 {
 }
 
 #myButton1 {
+  font-family: Consolas, monospace;
+}
+
+#welcome1 {
   display: block;
 }
 
