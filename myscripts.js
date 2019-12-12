@@ -14,12 +14,12 @@ function clicked() {
 
 function next() {  
   var paragraphDisplays = [
-    document.getElementById("welcome1").style.display,
-    document.getElementById("welcome2").style.display,
-    document.getElementById("welcome3").style.display,
-    document.getElementById("welcome4").style.display,
-    document.getElementById("problem").style.display,
-    document.getElementById("after").style.display
+    document.getElementsByClassName("welcome1").style.display,
+    document.getElementsByClassName("welcome2").style.display,
+    document.getElementsByClassName("welcome3").style.display,
+    document.getElementsByClassName("welcome4").style.display,
+    document.getElementsByClassName("problem").style.display,
+    document.getElementsByClassName("after").style.display
   ];
   alert("inside method");
   var i = paragraphDisplays.indexOf("block");
