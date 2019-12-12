@@ -13,18 +13,33 @@ function clicked() {
 }  
 
 function next() {  
-  var paragraphDisplays = [
-    document.getElementsByClassName("welcome1").style.display,
-    document.getElementsByClassName("welcome2").style.display,
-    document.getElementsByClassName("welcome3").style.display,
-    document.getElementsByClassName("welcome4").style.display,
-    document.getElementsByClassName("problem").style.display,
-    document.getElementsByClassName("after").style.display
+  var pc = [
+    "welcome1",
+    "welcome2",
+    "welcome3",
+    "welcome4",
+    "probelem",
+    "after"
   ];
-  alert("inside method");
-  var i = paragraphDisplays.indexOf("block");
-  paragraphDisplays[i] = "none";
+  
+  var paragraphDisplays = [
+    getComputedStyle(document.querySelector("." + pc[0])).display,
+    getComputedStyle(document.querySelector("." + pc[1])).display,
+    getComputedStyle(document.querySelector("." + pc[2])).display,
+    getComputedStyle(document.querySelector("." + pc[3])).display,
+    getComputedStyle(document.querySelector("." + pc[4])).display,
+    getComputedStyle(document.querySelector("." + pc[5])).display
+  ];
+  alert(paragraphDisplays[0]);
+  var index = paragraphDisplays.indexOf("block");
+  var paragraph = document.getElementsByClassName(pc[index]);
+  for (var i=0; i<paragraph.length;i++){
+    paragraph[i].style.display='block';
+  }
   if (i < paragraphDisplays.length) {
-    paragraphDisplays[i + 1] = "block";
+    var before = document.getElementsByClassName(pc[index - 1]);
+    for (var i=0; i<before.length;i++){
+      before[i].style.display='none';
+    }
   }
 }
