@@ -16,10 +16,6 @@ h1 {
   font-family: Consolas, monospace;
 }
 
-#welcome1 {
-  display: block;
-}
-
-p, p * {
+.welcome2, .welcome3, .welcome4, .problem, .after {
   display: none;
 }
