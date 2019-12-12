@@ -10,6 +10,7 @@ function clicked() {
     case "(/^.^)/\\(^.^\\)":
       elem.value = "<(v.v)>";
   }
+  console.log(":)");
 }  
 
 function next() {
