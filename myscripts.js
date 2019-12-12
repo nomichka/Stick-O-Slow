@@ -30,16 +30,31 @@ function next() {
     getComputedStyle(document.querySelector("." + pc[4])).display,
     getComputedStyle(document.querySelector("." + pc[5])).display
   ];
+  
   alert(paragraphDisplays[0]);
   var index = paragraphDisplays.indexOf("block");
   var paragraph = document.getElementsByClassName(pc[index]);
   for (var i=0; i<paragraph.length;i++){
     paragraph[i].style.display='block';
   }
+  
   if (i < paragraphDisplays.length) {
     var before = document.getElementsByClassName(pc[index - 1]);
     for (var i=0; i<before.length;i++){
       before[i].style.display='none';
     }
+  }
+  
+  if (pc[index] === "after") {
+    var answer = document.getElementsByName("answer")[0].value;
+    document.getElementsByClassName("after")[0].innerHTML = windows.after(answer);
+  }
+}
+
+function after(answer) {
+  if (answer === 25) {
+    return "Good job! \\(^.^)/";
+  } else {
+    return "Sorry, try again! /(v.v)\\";
   }
 }
