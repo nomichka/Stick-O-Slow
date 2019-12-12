@@ -19,6 +19,6 @@ h1 {
   display: block;
 }
 
-p, p > * {
+p, p * {
   display: none;
 }
