@@ -12,20 +12,19 @@ function clicked() {
   }
 }  
 
-function next() {
-  var paragraphs = [
-    document.getElementById("welcome1").style.display === "none",
-    document.getElementById("welcome2").style.display === "none",
-    document.getElementById("welcome3").style.display === "none",
-    document.getElementById("welcome4").style.display === "none",
-    document.getElementById("problem").style.display === "none",
-    document.getElementById("after").style.display === "none"
+function next() {  
+  var paragraphDisplays = [
+    document.getElementById("welcome1").style.display,
+    document.getElementById("welcome2").style.display,
+    document.getElementById("welcome3").style.display,
+    document.getElementById("welcome4").style.display,
+    document.getElementById("problem").style.display,
+    document.getElementById("after").style.display
   ];
   alert("inside method");
-  var i = paragraphs.indexOf("false");
-  paragraphs[i].style.display = "none";
-  if (i < paragraphs.length) {
-    paragraphs[i + 1].style.display = "block";
+  var i = paragraphDisplays.indexOf("block");
+  paragraphDisplays[i] = "none";
+  if (i < paragraphDisplays.length) {
+    paragraphDisplays[i + 1] = "block";
   }
-  
 }
