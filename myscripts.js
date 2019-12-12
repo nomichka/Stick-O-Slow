@@ -10,7 +10,6 @@ function clicked() {
     case "(/^.^)/\\(^.^\\)":
       elem.value = "<(v.v)>";
   }
-  console.log(":)");
 }  
 
 function next() {
@@ -22,7 +21,7 @@ function next() {
     document.getElementById("problem").style.display === "none",
     document.getElementById("after").style.display === "none"
   ];
-  console.log("inside method");
+  alert("inside method");
   var i = paragraphs.indexOf("false");
   paragraphs[i].style.display = "none";
   if (i < paragraphs.length) {
