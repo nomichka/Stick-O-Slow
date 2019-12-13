@@ -1,16 +1,19 @@
 function clicked() {
   var elem = document.getElementById("myButton1");
   switch (elem.value) {
-    case "<(v.v)>":
-      elem.value = "(v0.0)v  <(^.^<)";
+    case "1":
+      elem.innerHTML = "(v0.0)v  <(^.^<)";
+      elem.value = "2";
       break;
-    case "(v0.0)v  <(^.^<)":
-      elem.value = "(/^.^)/\\(^.^\\)";
+    case "2":
+      elem.innerHTML = "(/^.^)/\\(^.^\\)";
+      elem.value = "3";
       break;
-    case "(/^.^)/\\(^.^\\)":
-      elem.value = "<(v.v)>";
+    case "3":
+      elem.innerHTML = "<(v.v)>";
+      elem.value = "1";
   }
-}  
+}
 
 function next() {  
   var pc = [
@@ -18,41 +21,41 @@ function next() {
     "welcome2",
     "welcome3",
     "welcome4",
-    "probelem",
+    "problem",
     "after"
   ];
   
   var paragraphDisplays = [
-    getComputedStyle(document.querySelector("." + pc[0])).display,
-    getComputedStyle(document.querySelector("." + pc[1])).display,
-    getComputedStyle(document.querySelector("." + pc[2])).display,
-    getComputedStyle(document.querySelector("." + pc[3])).display,
-    getComputedStyle(document.querySelector("." + pc[4])).display,
-    getComputedStyle(document.querySelector("." + pc[5])).display
+  	getComputedStyle(document.getElementsByClassName(pc[0])[0]).display,
+  	getComputedStyle(document.getElementsByClassName(pc[1])[0]).display,
+  	getComputedStyle(document.getElementsByClassName(pc[2])[0]).display,
+  	getComputedStyle(document.getElementsByClassName(pc[3])[0]).display,
+  	getComputedStyle(document.getElementsByClassName(pc[4])[0]).display,
+  	getComputedStyle(document.getElementsByClassName(pc[5])[0]).display,
   ];
   
-  alert(paragraphDisplays[0]);
-  var index = paragraphDisplays.indexOf("block");
+  var index = paragraphDisplays.indexOf("block") + 1;
   var paragraph = document.getElementsByClassName(pc[index]);
+
   for (var i=0; i<paragraph.length;i++){
-    paragraph[i].style.display='block';
+    paragraph[i].style.display="block";
   }
   
-  if (i < paragraphDisplays.length) {
-    var before = document.getElementsByClassName(pc[index - 1]);
-    for (var i=0; i<before.length;i++){
-      before[i].style.display='none';
-    }
+  var before = document.getElementsByClassName(pc[index - 1]);
+  for (var i=0; i<before.length;i++){
+    before[i].style.display='none';
   }
+
   
   if (pc[index] === "after") {
     var answer = document.getElementsByName("answer")[0].value;
-    document.getElementsByClassName("after")[0].innerHTML = windows.after(answer);
+    var html = after(answer);
+    document.getElementsByClassName("after")[0].innerHTML = html;
   }
 }
 
 function after(answer) {
-  if (answer === 25) {
+  if (answer == 25) {
     return "Good job! \\(^.^)/";
   } else {
     return "Sorry, try again! /(v.v)\\";
