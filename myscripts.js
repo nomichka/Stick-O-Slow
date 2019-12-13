@@ -13,10 +13,12 @@ function clicked() {
       elem.innerHTML = "<(v.v)>";
       elem.value = "1";
   }
+  alert('hi');
 }
 
 function move(num) { 
-  if ( document.getElementById('next').style.display === 'none') {
+  alert('inside');
+  if (document.getElementById('next').style.display === 'none') {
   	 document.getElementById('next').style.display = "inline-block";
   }
   
