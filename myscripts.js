@@ -15,7 +15,11 @@ function clicked() {
   }
 }
 
-function next() {  
+function move(num) { 
+  if ( document.getElementById('next').style.display === 'none') {
+  	 document.getElementById('next').style.display = "inline-block";
+  }
+  
   var pc = [
     "welcome1",
     "welcome2",
@@ -34,14 +38,14 @@ function next() {
   	getComputedStyle(document.getElementsByClassName(pc[5])[0]).display,
   ];
   
-  var index = paragraphDisplays.indexOf("block") + 1;
+  var index = paragraphDisplays.indexOf("block") + num;
   var paragraph = document.getElementsByClassName(pc[index]);
 
   for (var i=0; i<paragraph.length;i++){
     paragraph[i].style.display="block";
   }
   
-  var before = document.getElementsByClassName(pc[index - 1]);
+  var before = document.getElementsByClassName(pc[index - num]);
   for (var i=0; i<before.length;i++){
     before[i].style.display='none';
   }
@@ -58,6 +62,7 @@ function after(answer) {
   if (answer == 25) {
     return "Good job! \\(^.^)/";
   } else {
+  	document.getElementById('next').style.display = 'none';
     return "Sorry, try again! /(v.v)\\";
   }
 }
