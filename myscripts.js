@@ -1,6 +1,11 @@
 /*
         Organization: global variables, then eventListeners, then methods
-        Current methods: animate(), move(num)
+        Current methods: animate(), move(num), process(curr), sortingStarsAfter()
+	
+	To process the input the user entered and do actions based off that input:
+		Check in the process(curr) method if the user is in the correct place to make changes (e.g. if (parClass[curr] === "sorting stars problem"))
+			Call a method inside the if statement with a descriptive name (e.g. sortingStarsAfter();)
+		Inside the method, do the stuff you want to do
 */
 
 // ----- GLOBAL VARIABLES -----
@@ -11,8 +16,8 @@ const parClass = [
 	"welcome2",
 	"welcome3",
 	"welcome4",
-	"problem1",
-	"after1"
+	"sorting stars problem",
+	"sorting stars after"
 ]
 
 
@@ -58,8 +63,7 @@ function animate() {
 
 // Do actions when the user clicks the next/prev button -> main action is to make the current paragraph have display:none and have the next/prev paragraph have display:block
 function move(num) {
-	// If the next button isn't being displayed and the user clicks
-        // the previous button, re-display the next button
+	// If the next button isn't being displayed and the user clicks the previous button, re-display the next button
         if (document.getElementById('next').style.display === 'none') {
   	        document.getElementById('next').style.display = "inline-block";
         }
@@ -72,6 +76,7 @@ function move(num) {
   
         // Change the display of the current paragraph and the next/prev paragraph (next if num is +1, prev if num is -1)
         const index = paragraphDisplays.indexOf("block");
+	
         let paragraph = document.getElementsByClassName(parClass[index + num]);
         for (let i=0; i<paragraph.length;i++){
                 paragraph[i].style.display="block";
@@ -80,21 +85,30 @@ function move(num) {
         for (let i=0; i<before.length;i++){
                 before[i].style.display='none';
         }
+	
+	// If going to the next paragraph, check if you need to process the input
+	if (num === 1) {
+		process(index);
+	}
+}
 
-        // If the next/prev paragraph is "after1," add to the paragraph and change display of next button depending on the answer given.
-        if (parClass[index + num] === "after1") {
-                const answer = document.getElementsByName("answer")[0].value;
-                const html = after1(answer);
-                document.getElementsByClassName("after1")[0].innerHTML = html;
+// Process input if needed; (int) curr = index of current paragraph
+function process(curr) {
+	// If the next/prev paragraph is "sorting stars after," add to the paragraph and change display of next button depending on the answer given.
+        if (parClass[curr] === "sorting stars problem") {
+                sortingStarsAfter();
         }
 }
 
 // Do actions on whether or not they got the first problem correct. Correct answer is 25.
-function after1(answer) {
+function sortingStarsAfter() {
+	const answer = document.getElementsByName("answer")[0].value;
+        let html = "";
         if (answer == 25) {
-                return "Good job! \\(^.^)/";
+                html =  "Good job! \\(^.^)/";
         } else {
   	        document.getElementById('next').style.display = 'none';
-                return "Sorry, try again! /(v.v)\\";
+                html = "Sorry, try again! /(v.v)\\";
         }
+	document.getElementsByClassName("sorting stars after")[0].innerHTML = html;
 }
