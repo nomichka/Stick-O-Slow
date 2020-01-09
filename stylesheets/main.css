@@ -16,10 +16,17 @@ h1 {
   font-family: Consolas, monospace;
 }
 
+
+#map {
+  margin-top: 5px;
+}
+
 .welcome1 {
   display: block;
 }
 
-.welcome2, .welcome3, .welcome4, .sorting-stars-problem, .sorting-stars-after {
+
+.map, .welcome2, .welcome3, .welcome4, .sorting-stars-problem, .sorting-stars-after {
+
   display: none;
 }
