@@ -1,13 +1,25 @@
 body {
   margin: 25px;
-  background-color: rgb(240,240,240);
+  background-color: rgb(240, 240, 240);
   font-family: arial, sans-serif;
   font-size: 14px;
+  text-align: center;
 }
 
-/* Applies to all <h1>...</h1> elements. */
 h1 {
   font-size: 35px;
   font-weight: normal;
   margin-top: 5px;
+}
+
+#myButton1 {
+  font-family: Consolas, monospace;
+}
+
+.welcome1 {
+  display: block;
+}
+
+p, input, textarea{
+  display: none;
 }
