@@ -1,6 +1,5 @@
 /*
         Organization: global variables, then eventListeners, then process methods, then render methods
-
         Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
 	To process the input the user entered and do actions based off that input:
@@ -46,7 +45,7 @@ var screen = 0;
 // Trigger animation
   
 // Trigger animation
-  document.getElementById("myButton1").addEventListener("click", animate, false);
+document.getElementById("myButton1").addEventListener("click", animate, false);
 
 // Move to next paragraph
 document.getElementById("next").addEventListener("click", function() {
@@ -86,23 +85,18 @@ function move(num) {
         if (document.getElementById('next').style.display === 'none') {
   	        document.getElementById('next').style.display = "inline-block";
         }
-
-  
         // Change the display of the current paragraph and the next/prev paragraph (next if num is +1, prev if num is -1)
 				unrender(parClass[screen]);
   			screen = screen + num;
         render(parClass[screen]);
         document.getElementById("debug").innerHTML = screen;
-     
-	
-	// If going to the next paragraph, check if you need to process the input
-	if (num === 1) {
-		process(screen);
-	}
+	// Process the input
+		process(screen, num);
 }
 
 // Process input if needed; (int) curr = index of current paragraph
-function process(curr) {
+function process(curr, num) {
+				//Update level
   			if(curr === 4 && level < 1){
         	level = 1;
         }
@@ -112,8 +106,12 @@ function process(curr) {
                 sortingStarsAfter();
         }
           // If the next/prev paragraph is "sorting stars after," make the set-up.
-          if (parClass[curr] === "welcome4") {
-          	sortingStarsIntro1();
+          if (parClass[curr] === "sorting-stars-intro-1" && num === 1) {
+          	sortingStarsIntro1(num);
+          }
+          
+          if (parClass[curr] === "welcome4" && num === -1) {
+          	sortingStarsIntro1(num);
           }
 }
 
@@ -129,9 +127,15 @@ function sortingStarsAfter() {
         }
 	document.getElementsByClassName("sorting-stars-after")[0].innerHTML = html;
 }
-function sortingStarsIntro1() {
+function sortingStarsIntro1(num) {
+		if (num == 1) {
       document.body.style.background = "black";
       document.body.style.color = "white";
+    }
+    if (num == -1) {
+      document.body.style.background = "#f0f0f0";
+      document.body.style.color = "black";
+    }
   }
 
 
