@@ -4,7 +4,7 @@
         Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
 	To process the input the user entered and do actions based off that input:
-		Check in the process(curr) method if the user is in the correct place to make changes (e.g. if (parClass[curr] === "sorting stars problem"))
+		Check in the process(curr) method if the user is in the correct place to make changes (e.g. if (parClass[curr] === "sorting-stars-problem"))
 			Call a method inside the if statement with a descriptive name (e.g. sortingStarsAfter();)
 		Inside the method, do the stuff you want to do
 */
@@ -127,8 +127,12 @@ function sortingStarsAfter() {
   	        document.getElementById('next').style.display = 'none';
                 html = "Sorry, try again! /(v.v)\\";
         }
-	document.getElementsByClassName("sorting stars after")[0].innerHTML = html;
+	document.getElementsByClassName("sorting-stars-after")[0].innerHTML = html;
 }
+function sortingStarsIntro1() {
+      document.body.style.background = "black";
+      document.body.style.color = "white";
+  }
 
 
 
@@ -187,10 +191,6 @@ function animate() {
                           cute.innerHTML = "ERROR";
                           cute.value = "3";
           }
-  function sortingStarsIntro1() {
-      document.body.style.background = "black";
-      document.body.style.color = "white";
-  }
 }
   
 });
