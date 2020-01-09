@@ -1,5 +1,7 @@
 /*
+
         Organization: global variables, then eventListeners, then process methods, then render methods
+        Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
 	To process the input the user entered and do actions based off that input:
 		Check in the process(curr) method if the user is in the correct place to make changes (e.g. if (parClass[curr] === "sorting stars problem"))
@@ -10,14 +12,15 @@
 // ----- GLOBAL VARIABLES -----
 
 // All the names of the paragraph classes
+window.addEventListener('load', function(event) {
 const parClass = [
-	"welcome1",
-	"welcome2",
-	"welcome3",
-	"welcome4",
-	"sorting stars problem",
-	"sorting stars after"
-]
+    "welcome1",
+    "welcome2",
+    "welcome3",
+    "welcome4",
+    "sorting-stars-problem",
+    "sorting-stars-after"
+  ]
 
 var level = 0;
 var screen = 0;
@@ -28,6 +31,9 @@ var screen = 0;
 // ----- EVENTLISTENERS -----
 
 // Trigger animation
+  
+// Trigger animation
+  document.getElementById("myButton1").addEventListener("click", animate, false);
 
 // Move to next paragraph
 document.getElementById("next").addEventListener("click", function() {
@@ -67,21 +73,14 @@ function move(num) {
         if (document.getElementById('next').style.display === 'none') {
   	        document.getElementById('next').style.display = "inline-block";
         }
-  
-        // Access the display of each paragraph (only one should be block; rest should be none)
-        let paragraphDisplays = [];
-        for (let i=0; i<parClass.length;i++) {
-                paragraphDisplays.push(getComputedStyle(document.getElementsByClassName(parClass[i])[0]).display);
-        }
+
   
         // Change the display of the current paragraph and the next/prev paragraph (next if num is +1, prev if num is -1)
 				unrender(parClass[screen]);
   			screen = screen + num;
         render(parClass[screen]);
         document.getElementById("debug").innerHTML = screen;
-        
-        
-        
+     
 	
 	// If going to the next paragraph, check if you need to process the input
 	if (num === 1) {
@@ -151,5 +150,25 @@ function maptolevel() {
   document.getElementById('next').style.display = "inline-block";
   document.getElementById("debug").innerHTML = screen;
 }
-
-
+  
+function animate() {
+          let cute = document.getElementById("myButton1");
+          switch (cute.value) {
+                  case "1":
+                          cute.innerHTML = "(v0.0)v  &lt(^.^&gt)";
+                          cute.value = "2";
+                          break;
+                  case "2":
+                          cute.innerHTML = "(/^.^)/\\(^.^\\)";
+                          cute.value = "3";
+                          break;
+                  case "3":
+                          cute.innerHTML = "&lt(v.v)&gt";
+                          cute.value = "1";
+                          break;
+                  default:
+                          cute.innerHTML = "ERROR";
+                          cute.value = "3";
+          }
+}
+});

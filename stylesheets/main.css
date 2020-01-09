@@ -16,6 +16,7 @@ h1 {
   font-family: Consolas, monospace;
 }
 
+
 #map {
   margin-top: 5px;
 }
@@ -24,6 +25,8 @@ h1 {
   display: block;
 }
 
-.map, .welcome2, .welcome3, .welcome4, .problem, .after {
+
+.map, .welcome2, .welcome3, .welcome4, .sorting-stars-problem, .sorting-stars-after {
+
   display: none;
 }
