@@ -14,15 +14,26 @@
   
 <head> 
   	<title>Stick O Slow</title>
-	<link type="text/css" rel="stylesheet" href="stylesheets/main.css"/>
+  	<link type="text/css" rel="stylesheet" href="stylesheets/main.css"/>
 	<script type="text/javascript" src="myscripts.js"></script>
 </head>
 	
 <body>
-	<button id="myButton1" type="button" value="1">
+             
+  <button id="myButton1" type="button" value="1">
 		&lt(v.v)&gt
 	</button>
-	
+  <div id="mapscreen">
+    <button id="back" class = "map" type="button">
+      Back
+    </button>
+    <button id="map0" class = "map" type="button">
+		  Welcome
+	  </button>	       
+	  <button id="map1" class = "map" type="button"> 
+  		Sorting Stars
+	  </button>
+  </div>
 	<div id="intro">
 		<p class="welcome1">
 			Welcome to the Game of Sticks!
@@ -67,7 +78,6 @@
       Note: I'd recommend creating the numbers through a program, unless you prefer to create <em>1000</em> numbers by hand.
     </p>
     <textarea class="sorting-stars-numbers" type="text" name="sorting-stars-numbers-answer" rows="4" cols="50"></textarea>
-    
 		<p class="sorting-stars-problem">
 			Sort the stars into increasing order by volume. The input is below. The first number is the number of stars, N. Lines 1 to N + 1 are the volumes of the N stars, in km cubed. <br><br>
 			INPUT: <br><br>
@@ -86,21 +96,20 @@
 		<p class="sorting-stars-after">
 		</p>
 	</div>
-	
-	
-	<button id="prev" type="button">
+
+	<button id="prev" class = "scroll" type="button">
 		Previous
 	</button>	       
-	<button id="next" type="button"> 
+	<button id="next" class = "scroll" type="button"> 
   		Next
 	</button>
+  <button id="toMap" type="button">
+    Map
+  </button>
   
-  <div id="drawings">
-    <p>
+  <pre id = "debug">
     
-    </p>
-  
-  </div>
+  </pre>
 
 	</body>
 </html>
