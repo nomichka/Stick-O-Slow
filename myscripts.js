@@ -1,6 +1,6 @@
 /*
-
         Organization: global variables, then eventListeners, then process methods, then render methods
+
         Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
 	To process the input the user entered and do actions based off that input:
@@ -11,6 +11,7 @@
 
 // ----- GLOBAL VARIABLES -----
 
+
 // All the names of the paragraph classes
 window.addEventListener('load', function(event) {
 const parClass = [
@@ -18,6 +19,18 @@ const parClass = [
     "welcome2",
     "welcome3",
     "welcome4",
+    "sorting-stars-intro-1",
+    "sorting-stars-intro-2",
+    "sorting-stars-intro-3",
+    "sorting-stars-intro-4",
+    "sorting-stars-intro-5",
+    "sorting-stars-intro-6",
+    "sorting-stars-intro-7",
+    "sorting-stars-intro-8",
+    "sorting-stars-intro-9",
+    "sorting-stars-intro-10",
+    "sorting-stars-intro-11",
+    "sorting-stars-numbers",
     "sorting-stars-problem",
     "sorting-stars-after"
   ]
@@ -90,14 +103,18 @@ function move(num) {
 
 // Process input if needed; (int) curr = index of current paragraph
 function process(curr) {
-	// If the next/prev paragraph is "sorting stars after," add to the paragraph and change display of next button depending on the answer given.
   			if(curr === 4 && level < 1){
         	level = 1;
         }
   			
-        if (parClass[curr] === "sorting stars after") {
+	      // If the next/prev paragraph is "sorting stars after," add to the paragraph and change display of next button depending on the answer given.
+        if (parClass[curr] === "sorting-stars-after") {
                 sortingStarsAfter();
         }
+          // If the next/prev paragraph is "sorting stars after," make the set-up.
+          if (parClass[curr] === "welcome4") {
+          	sortingStarsIntro1();
+          }
 }
 
 // Do actions on whether or not they got the first problem correct. Correct answer is 25.
@@ -170,5 +187,10 @@ function animate() {
                           cute.innerHTML = "ERROR";
                           cute.value = "3";
           }
+  function sortingStarsIntro1() {
+      document.body.style.background = "black";
+      document.body.style.color = "white";
+  }
 }
+  
 });
