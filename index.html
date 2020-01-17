@@ -1,39 +1,40 @@
-<!--
-	To add a basic new problem:
-		Add a div with an id of that problem (e.g. <div id="sorting stars">)
-			Inside the div, add a p with a class of the problem + "problem"(e.g. < p class="sorting stars problem">)
-			Inside the div, add a form/input with the same class (e.g. <form><input class="sorting stars problem" type="number" name="answer"></form>
-			Inside the div, add a p with a class of the problem + "after" (e.g. <p class="sorting stars after">)
-				This p will be empty until you add to it with javascript 
-		Go to myscripts.js and read the documentation there on how to process input
-		
--->
-
 <!DOCTYPE html>
 <html>
-  
-<head> 
-  	<title>Stick O Slow</title>
-  	<link type="text/css" rel="stylesheet" href="stylesheets/main.css"/>
-	<script type="text/javascript" src="myscripts.js"></script>
-</head>
-	
-<body>
-             
-  <button id="myButton1" type="button" value="1">
-		&lt(v.v)&gt
-	</button>
-  <div id="mapscreen">
-    <button id="back" class = "map" type="button">
-      Back
+
+  <head>
+    <title>Stick O Slow</title>
+    <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+    <script type="text/javascript" src="myscripts.js"></script>
+  </head>
+
+  <body>
+    <div id="screenchange">
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+    </div>
+    <div id="mapscreen">
+      <button id="map0" class="map" type="button">
+        Welcome
+      </button>
+      <button id="map1" class="map" type="button">
+        Sorting Stars
+      </button>
+      <button id="back" class="back" type="button">
+        Back
+      </button>
+    </div>
+    <button id="prev" class="scroll" type="button">
+      Previous
     </button>
-    <button id="map0" class = "map" type="button">
-		  Welcome
-	  </button>	       
-	  <button id="map1" class = "map" type="button"> 
-  		Sorting Stars
-	  </button>
-  </div>
+    <button id="next" class="scroll" type="button">
+      Next
+    </button>
+
 	<div id="intro">
 		<p class="welcome1">
 			Welcome to the Game of Sticks!
@@ -97,16 +98,6 @@
 		</p>
 	</div>
 
-	<button id="prev" class = "scroll" type="button">
-		Previous
-	</button>	       
-	<button id="next" class = "scroll" type="button"> 
-  		Next
-	</button>
-  <button id="toMap" type="button">
-    Map
-  </button>
-  
   <pre id = "debug">
     
   </pre>

@@ -1,4 +1,5 @@
 /*
+
         Organization: global variables, then eventListeners, then process methods, then render methods
         Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
@@ -12,7 +13,6 @@
 
 
 // All the names of the paragraph classes
-window.addEventListener('load', function(event) {
 const parClass = [
     "welcome1",
     "welcome2",
@@ -32,20 +32,52 @@ const parClass = [
     "sorting-stars-numbers",
     "sorting-stars-problem",
     "sorting-stars-after"
-  ]
+]
+
+const levelMap = [
+    0,
+    16
+]
 
 var level = 0;
 var screen = 0;
 
+const changeClass = document.getElementsByClassName("strip");
+const stripheight = (window.screen.height)/(changeClass.length);
+const width = window.screen.width;
+document.getElementById("debug").innerHTML = stripheight;
+for(let i = 0; i < changeClass.length; i++){
+	changeClass[i].style.width = width + 'px';
+	changeClass[i].style.height = stripheight + 'px';
+  changeClass[i].style.top = stripheight*i + 'px';
+	changeClass[i].style.display = "none";
+}
+var changex = -width-200;
 
+var id;
+  
+// Trigger animation
+document.getElementById("myButton1").addEventListener("click", animate, false);
 
+document.getElementById("toMap").addEventListener("click", function() {
+	maprender(level);
+});
+
+document.getElementById("map0").addEventListener("click", function() {
+	maptoscreen(levelMap[0]);
+});
+
+document.getElementById("map1").addEventListener("click", function() {
+	maptoscreen(levelMap[1]);
+});
+
+document.getElementById("back").addEventListener("click", function() {
+	maptoscreen(screen);
+});
 
 // ----- EVENTLISTENERS -----
 
 // Trigger animation
-  
-// Trigger animation
-document.getElementById("myButton1").addEventListener("click", animate, false);
 
 // Move to next paragraph
 document.getElementById("next").addEventListener("click", function() {
@@ -57,27 +89,8 @@ document.getElementById("prev").addEventListener("click", function() {
 	move(-1);
 });
 
-//Map buttons
-document.getElementById("toMap").addEventListener("click", function() {
-	maprender(level);
-});
 
-document.getElementById("back").addEventListener("click", function() {
-  unrender("back");
-  maptolevel();
-});
-
-document.getElementById("map0").addEventListener("click", function() {
-	screen = 0;
-  maptolevel();
-});
-
-document.getElementById("map1").addEventListener("click", function() {
-	screen = 4;
-  maptolevel();
-});
-
-// ----- PROCESS METHODS -----
+// ----- METHODS -----
 
 // Do actions when the user clicks the next/prev button -> main action is to make the current paragraph have display:none and have the next/prev paragraph have display:block
 function move(num) {
@@ -85,19 +98,34 @@ function move(num) {
         if (document.getElementById('next').style.display === 'none') {
   	        document.getElementById('next').style.display = "inline-block";
         }
+  
         // Change the display of the current paragraph and the next/prev paragraph (next if num is +1, prev if num is -1)
 				unrender(parClass[screen]);
   			screen = screen + num;
         render(parClass[screen]);
         document.getElementById("debug").innerHTML = screen;
-	// Process the input
+
 		process(screen, num);
+}
+
+function render(screenclass) {
+	let paragraph = document.getElementsByClassName(screenclass);
+  for (let i=0; i<paragraph.length;i++){
+  	paragraph[i].style.display="block";
+  }
+}
+
+function unrender(screenclass) {
+	let before = document.getElementsByClassName(screenclass);
+  for (let i=0; i<before.length;i++){
+  	before[i].style.display='none';
+  }
 }
 
 // Process input if needed; (int) curr = index of current paragraph
 function process(curr, num) {
 				//Update level
-  			if(curr === 4 && level < 1){
+  			if(curr === levelMap[1] && level < 1){
         	level = 1;
         }
   			
@@ -127,6 +155,7 @@ function sortingStarsAfter() {
         }
 	document.getElementsByClassName("sorting-stars-after")[0].innerHTML = html;
 }
+
 function sortingStarsIntro1(num) {
 		if (num == 1) {
       document.body.style.background = "black";
@@ -168,14 +197,54 @@ function maprender(lev){
   render("back");
 }
 
-function maptolevel() {
-	unrender("map");
-  render(parClass[screen]);
-  document.getElementById('prev').style.display = "inline-block";
-  document.getElementById('next').style.display = "inline-block";
-  document.getElementById("debug").innerHTML = screen;
-}
   
+function screenchange() {
+	for(let i = 0; i < changeClass.length; i++){
+  			changeClass[i].style.left = changex - 70*i + 'px';
+        changeClass[i].style.display = "block";
+  }
+  changex = -width-200;
+  id = setInterval(changeframe, 10);
+}
+
+function changeframe() {
+     if(changex > width) {
+     		clearInterval(id);       
+     } else {
+     	changex = changex+width/70;
+      for(let i = 0; i < changeClass.length; i++){
+  			changeClass[i].style.left = changex - stripheight*i + 'px';
+      }
+     }
+}
+
+function maprender(lev){
+	screenchange();
+	setTimeout( () => {
+    unrender(parClass[screen]);
+    unrender("scroll");
+    let maplist = document.getElementsByClassName("map");
+    for (let i=0; i<maplist.length;i++){
+      if(level >= i){
+        maplist[i].style.display="block";
+      }
+    }
+    render("back");
+	}, 700);
+}
+
+function maptoscreen(screennum){
+	screenchange();
+	setTimeout( () => {
+    screen = screennum;
+    unrender("map");
+    unrender("back");
+    render(parClass[screen]);
+    document.getElementById('prev').style.display = "inline-block";
+    document.getElementById('next').style.display = "inline-block";
+	}, 700);
+}
+
 function animate() {
           let cute = document.getElementById("myButton1");
           switch (cute.value) {
@@ -198,3 +267,4 @@ function animate() {
 }
   
 });
+
