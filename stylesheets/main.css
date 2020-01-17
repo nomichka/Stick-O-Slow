@@ -1,6 +1,6 @@
 body {
   margin: 25px;
-  background-color: rgb(240,240,240);
+  background-color: rgb(240, 240, 240);
   font-family: arial, sans-serif;
   font-size: 14px;
   text-align: center;
@@ -15,7 +15,6 @@ h1 {
 #myButton1 {
   font-family: Consolas, monospace;
 }
-
 
 #map {
   margin-top: 5px;
@@ -46,7 +45,8 @@ h1 {
   display: block;
 }
 
-.back, .map, .welcome2, .welcome3, .welcome4, .problem, .after {
+
+.back, .map, .welcome2, .welcome3, .welcome4, .sorting-stars-problem, .sorting-stars-after {
   display: none;
 }
 
@@ -57,12 +57,7 @@ h1 {
   background: black;
   position: absolute;
 }
-.welcome1 {
-  display: block;
-}
 
-
-.map, .welcome2, .welcome3, .welcome4, .sorting-stars-problem, .sorting-stars-after {
-
+p, input, textarea {
   display: none;
 }
