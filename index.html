@@ -1,37 +1,88 @@
-body {
-  margin: 25px;
-  background-color: rgb(240,240,240);
-  font-family: arial, sans-serif;
-  font-size: 14px;
-  text-align: center;
-}
+<!DOCTYPE html>
+<html>
 
-h1 {
-  font-size: 35px;
-  font-weight: normal;
-  margin-top: 5px;
-}
+  <head>
+    <title>Stick O Slow</title>
+    <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
+    <script type="text/javascript" src="myscripts.js"></script>
+  </head>
 
-#myButton1 {
-  font-family: Consolas, monospace;
-}
+  <body>
+    <div id="screenchange">
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+      <div class="strip"> </div>
+    </div>
+    <div id="mapscreen">
+      <button id="map0" class="map" type="button">
+        Welcome
+      </button>
+      <button id="map1" class="map" type="button">
+        Sorting Stars
+      </button>
+      <button id="back" class="back" type="button">
+        Back
+      </button>
+    </div>
+    <div id="intro">
+      <p class="welcome1">
+        Welcome to the Game of Sticks!
+      </p>
+      <p class="welcome2">
+        In this game, you are an All-Powerful Being that has decided to create a More Efficient Universe. To accomplish this task, you'll have to solve problems and stuff using the Power of Programming</p>
+      <p class="welcome3">
+        It'll be difficult at times, but I promise to keep my faith in you and help in any way I can. As you play this game, my hope is that you learn advanced programming concepts - so that you can implement them to advance in the game, and so that you can implement them to advance in life.
+      </p>
+      <p class="welcome4">
+        Let's begin?
+      </p>
+    </div>
+    <div id="sorting stars">
+      <p class="sorting stars problem">
+        Sort the stars into increasing order by volume. The input is below. The first number is the number of stars, N. Lines 1 to N + 1 are the volumes of the N stars, in km cubed. <br><br>
+        INPUT: <br><br>
+        7<br>
+        48<br>
+        25<br>
+        55<br>
+        25<br>
+        24<br>
+        9<br>
+        70<br>
+        <br>
+        OUTPUT: What is the 4th number?
+      </p>
+      <form>
+        <input class="sorting stars problem" type="number" name="answer">
+      </form>
+      <p class="sorting stars after">
+      </p>
+    </div>
 
-#map {
-  margin-top: 5px;
-}
+    <div id=" ">
 
-.welcome1 {
-  display: block;
-}
+    </div>
 
-.back, .map, .welcome2, .welcome3, .welcome4, .problem, .after {
-  display: none;
-}
 
-.strip {
-  display: none;
-  width: 800px;
-  height: 50px;
-  background: black;
-  position: absolute;
-}
+    <button id="prev" class="scroll" type="button">
+      Previous
+    </button>
+    <button id="next" class="scroll" type="button">
+      Next
+    </button>
+
+    <button id="toMap" type="button">
+      Map
+    </button>
+
+    <pre id="debug">
+
+  </pre>
+
+  </body>
+
+</html>
