@@ -268,5 +268,4 @@ function animate() {
 }
   
 });
-});
 
