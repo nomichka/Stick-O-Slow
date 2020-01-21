@@ -32,6 +32,6 @@ h1 {
   display: none;
   width: 800px;
   height: 50px;
-  background: black;
+  background: rgb(69,69,69);
   position: absolute;
 }
