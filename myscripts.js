@@ -21,7 +21,7 @@ const parClass = [
 ]
 
 const levelmap = [
-	0,
+  0,
   4
 ]
 
@@ -34,9 +34,9 @@ const width = window.screen.width;
 const changetime = 500; //screen change time in ms
 document.getElementById("debug").innerHTML = stripheight;
 for(let i = 0; i < changeClass.length; i++){
-	changeClass[i].style.width = width + 'px';
+	changeClass[i].style.width = (width + 100) + 'px';
 	changeClass[i].style.height = stripheight + 'px';
-  changeClass[i].style.top = stripheight*i + 'px';
+  	changeClass[i].style.top = stripheight*i + 'px';
 	changeClass[i].style.display = "none";
 }
 var changex = -width-200;
@@ -44,8 +44,8 @@ var changex = -width-200;
 var id;
 function screenchange() {
 	for(let i = 0; i < changeClass.length; i++){
-  			changeClass[i].style.left = changex - 70*i + 'px';
-        changeClass[i].style.display = "block";
+  	  changeClass[i].style.left = changex - 70*i + 'px';
+          changeClass[i].style.display = "block";
   }
   changex = -width-200;
   id = setInterval(changeframe, 10);
