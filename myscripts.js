@@ -1,16 +1,15 @@
 /*
-
-        Organization: global variables, then eventListeners, then process methods, then render methods
+        Organization: global variables, then eventListeners, then methods
         Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
 	To process the input the user entered and do actions based off that input:
-		Check in the process(curr) method if the user is in the correct place to make changes (e.g. if (parClass[curr] === "sorting-stars-problem"))
+		Check in the process(curr) method if the user is in the correct place to make changes (e.g. if (parClass[curr] === "sorting stars problem"))
 			Call a method inside the if statement with a descriptive name (e.g. sortingStarsAfter();)
 		Inside the method, do the stuff you want to do
 */
-
 window.addEventListener('load', function(event) {
 // ----- GLOBAL VARIABLES -----
+
 // All the names of the paragraph classes
 const parClass = [
 	"welcome1",
@@ -21,6 +20,10 @@ const parClass = [
 	"sorting stars after"
 ]
 
+const levelmap = [
+	0,
+  4
+]
 
 var level = 0;
 var screen = 0;
@@ -28,6 +31,7 @@ var screen = 0;
 const changeClass = document.getElementsByClassName("strip");
 const stripheight = (window.screen.height)/(changeClass.length);
 const width = window.screen.width;
+const changetime = 500; //screen change time in ms
 document.getElementById("debug").innerHTML = stripheight;
 for(let i = 0; i < changeClass.length; i++){
 	changeClass[i].style.width = width + 'px';
@@ -48,10 +52,10 @@ function screenchange() {
 }
 
 function changeframe() {
-     if(changex > width) {
+     if(changex > 2*width) {
      		clearInterval(id);       
      } else {
-     	changex = changex+width/70;
+     	changex = changex+width/(changetime/10);
       for(let i = 0; i < changeClass.length; i++){
   			changeClass[i].style.left = changex - stripheight*i + 'px';
       }
@@ -70,7 +74,7 @@ function maprender(lev){
       }
     }
     render("back");
-	}, 700);
+	}, changetime);
 }
 
 function maptoscreen(screennum){
@@ -82,7 +86,7 @@ function maptoscreen(screennum){
     render(parClass[screen]);
     document.getElementById('prev').style.display = "inline-block";
     document.getElementById('next').style.display = "inline-block";
-	}, 700);
+	}, changetime);
 }
 
 document.getElementById("toMap").addEventListener("click", function() {
@@ -90,11 +94,11 @@ document.getElementById("toMap").addEventListener("click", function() {
 });
 
 document.getElementById("map0").addEventListener("click", function() {
-	maptoscreen(0);
+	maptoscreen(levelmap[0]);
 });
 
 document.getElementById("map1").addEventListener("click", function() {
-	maptoscreen(4);
+	maptoscreen(levelmap[1]);
 });
 
 document.getElementById("back").addEventListener("click", function() {
@@ -163,8 +167,10 @@ function unrender(screenclass) {
 // Process input if needed; (int) curr = index of current paragraph
 function process(curr) {
 	// If the next/prev paragraph is "sorting stars after," add to the paragraph and change display of next button depending on the answer given.
-  			if(curr === 4 && level < 1){
-        	level = 1;
+  			for(let i = 1; i < levelmap.length; i++){
+          if(curr === levelmap[i] && level < i){
+            level = 1;
+          }
         }
   			
         if (parClass[curr] === "sorting stars after") {
@@ -184,6 +190,5 @@ function sortingStarsAfter() {
         }
 	document.getElementsByClassName("sorting stars after")[0].innerHTML = html;
 }
-  
-});
 
+});
