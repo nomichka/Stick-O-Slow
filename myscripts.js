@@ -13,6 +13,7 @@
 
 
 // All the names of the paragraph classes
+window.addEventListener('load', function(event) {
 const parClass = [
     "welcome1",
     "welcome2",
@@ -266,5 +267,6 @@ function animate() {
           }
 }
   
+});
 });
 
