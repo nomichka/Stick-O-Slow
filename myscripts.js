@@ -1,5 +1,6 @@
 /*
         Organization: global variables, then eventListeners, then process methods, then render methods
+
         Current methods: animate(), move(num), process(curr), sortingStarsAfter()
 	
 	To process the input the user entered and do actions based off that input:
@@ -7,12 +8,10 @@
 			Call a method inside the if statement with a descriptive name (e.g. sortingStarsAfter();)
 		Inside the method, do the stuff you want to do
 */
-
+window.addEventListener('load', function(event) {
 // ----- GLOBAL VARIABLES -----
 
-
 // All the names of the paragraph classes
-window.addEventListener('load', function(event) {
 const parClass = [
     "welcome1",
     "welcome2",
@@ -33,7 +32,11 @@ const parClass = [
     "sorting-stars-numbers-after",
     "sorting-stars-problem",
     "sorting-stars-after"
-  ]
+
+const levelmap = [
+  0,
+  4
+]
 
 let level = 0;
 let screen = 0;
@@ -42,15 +45,89 @@ let sortingStarsNumbers = [];
 let sortingStarsNumbersSorted = [];
 let sortingStarsNumber = 0;
 
+const changeClass = document.getElementsByClassName("strip");
+const stripheight = (window.screen.height)/(changeClass.length);
+const width = window.screen.width;
+const changetime = 500; //screen change time in ms
+document.getElementById("debug").innerHTML = stripheight;
+for(let i = 0; i < changeClass.length; i++){
+	changeClass[i].style.width = (width + 100) + 'px';
+	changeClass[i].style.height = stripheight + 'px';
+  	changeClass[i].style.top = stripheight*i + 'px';
+	changeClass[i].style.display = "none";
+}
+var changex = -width-200;
 
+var id;
+function screenchange() {
+	for(let i = 0; i < changeClass.length; i++){
+  	  changeClass[i].style.left = changex - 70*i + 'px';
+          changeClass[i].style.display = "block";
+  }
+  changex = -width-200;
+  id = setInterval(changeframe, 10);
+}
 
+function changeframe() {
+     if(changex > 2*width) {
+     		clearInterval(id);       
+     } else {
+     	changex = changex+width/(changetime/10);
+      for(let i = 0; i < changeClass.length; i++){
+  			changeClass[i].style.left = changex - stripheight*i + 'px';
+      }
+     }
+}
+
+function maprender(lev){
+	screenchange();
+	setTimeout( () => {
+    unrender(parClass[screen]);
+    unrender("scroll");
+    let maplist = document.getElementsByClassName("map");
+    for (let i=0; i<maplist.length;i++){
+      if(level >= i){
+        maplist[i].style.display="block";
+      }
+    }
+    render("back");
+	}, changetime);
+}
+
+// Trigger animation
+document.getElementById("myButton1").addEventListener("click", animate, false);
+
+function maptoscreen(screennum){
+	screenchange();
+	setTimeout( () => {
+    screen = screennum;
+    unrender("map");
+    unrender("back");
+    render(parClass[screen]);
+    document.getElementById('prev').style.display = "inline-block";
+    document.getElementById('next').style.display = "inline-block";
+	}, changetime);
+}
+
+document.getElementById("toMap").addEventListener("click", function() {
+	maprender(level);
+});
+
+document.getElementById("map0").addEventListener("click", function() {
+	maptoscreen(levelmap[0]);
+});
+
+document.getElementById("map1").addEventListener("click", function() {
+	maptoscreen(levelmap[1]);
+});
+
+document.getElementById("back").addEventListener("click", function() {
+	maptoscreen(screen);
+});
 
 // ----- EVENTLISTENERS -----
 
 // Trigger animation
-  
-// Trigger animation
-document.getElementById("myButton1").addEventListener("click", animate, false);
 
 // Move to next paragraph
 document.getElementById("next").addEventListener("click", function() {
@@ -62,27 +139,8 @@ document.getElementById("prev").addEventListener("click", function() {
 	move(-1);
 });
 
-//Map buttons
-document.getElementById("toMap").addEventListener("click", function() {
-	maprender(level);
-});
 
-document.getElementById("back").addEventListener("click", function() {
-  unrender("back");
-  maptolevel();
-});
-
-document.getElementById("map0").addEventListener("click", function() {
-	screen = 0;
-  maptolevel();
-});
-
-document.getElementById("map1").addEventListener("click", function() {
-	screen = 4;
-  maptolevel();
-});
-
-// ----- PROCESS METHODS -----
+// ----- METHODS -----
 
 // Do actions when the user clicks the next/prev button -> main action is to make the current paragraph have display:none and have the next/prev paragraph have display:block
 function move(num) {
@@ -98,8 +156,23 @@ function move(num) {
   			screen = screen + num;
         render(parClass[screen]);
         document.getElementById("debug").innerHTML = screen;
+
 	// Process the input
 		process(screen, num);
+}
+
+function render(screenclass) {
+	let paragraph = document.getElementsByClassName(screenclass);
+  for (let i=0; i<paragraph.length;i++){
+  	paragraph[i].style.display="block";
+  }
+}
+
+function unrender(screenclass) {
+	let before = document.getElementsByClassName(screenclass);
+  for (let i=0; i<before.length;i++){
+  	before[i].style.display='none';
+  }
 }
 
 // Process input if needed; (int) curr = index of current paragraph
@@ -107,6 +180,11 @@ function process(curr, num) {
 				//Update level
   			if(curr === 4 && level < 1){
         	level = 1;
+        }
+        for(let i = 1; i < levelmap.length; i++){
+          if(curr === levelmap[i] && level < i){
+            level = 1;
+          }
         }
   			// If the next/prev paragraph is "sorting stars after," make the set-up.
           if (parClass[curr] === "sorting-stars-intro-1" && num === 1) {
@@ -141,6 +219,7 @@ function process(curr, num) {
 	      // If the next/prev paragraph is "sorting stars after," add to the paragraph and change display of next button depending on the answer given.
         if (parClass[curr] === "sorting-stars-after") {
                 sortingStarsAfter();
+
         }
 }
 
@@ -278,5 +357,4 @@ function animate() {
                           cute.value = "3";
           }
 }
-  
 });

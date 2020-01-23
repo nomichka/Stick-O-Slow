@@ -1,6 +1,6 @@
 body {
   margin: 25px;
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(240,240,240);
   font-family: arial, sans-serif;
   font-size: 14px;
   text-align: center;
@@ -26,6 +26,14 @@ h1 {
   display: block;
 }
 
-.map, p, input, textarea {
+.back, .map, .welcome2, .welcome3, .welcome4, .problem, .after {
   display: none;
+}
+
+.strip {
+  display: none;
+  width: 800px;
+  height: 50px;
+  background: rgb(69,69,69);
+  position: absolute;
 }
