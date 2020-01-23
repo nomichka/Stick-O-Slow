@@ -32,6 +32,7 @@ const parClass = [
     "sorting-stars-numbers-after",
     "sorting-stars-problem",
     "sorting-stars-after"
+ ]
 
 const levelmap = [
   0,
@@ -281,7 +282,6 @@ function sortingStarsNumbersAfter() {
     sortingStarsNumbers = array;
     sortingStarsNumbersSorted = array.concat().sort();
     sortingStarsNumber = sortingStarsNumbers[420];
-    alert(sortingStarsNumber);
   }
   document.getElementsByClassName("sorting-stars-numbers-after")[0].innerHTML = html;
 	document.getElementsByClassName("sorting-stars-problem")[2].innerHTML = html2;
