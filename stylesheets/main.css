@@ -26,7 +26,7 @@ h1 {
   display: block;
 }
 
-.map, p, input, textarea {
+.map, p, input, textarea, #back {
   display: none;
 }
 
@@ -34,6 +34,6 @@ h1 {
   display: none;
   width: 800px;
   height: 50px;
-  background: rgb(69,69,69);
+  background: rgb(69, 69, 69);
   position: absolute;
 }
