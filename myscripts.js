@@ -184,6 +184,10 @@ function process(curr, num) {
             level = 1;
           }
         }
+	
+	if(curr === -20){
+        	document.getElementById("debug").innerHTML = "Hi! I'm a secret room";
+        }
   			// If the next/prev paragraph is "sorting stars after," make the set-up.
           if (parClass[curr] === "sorting-stars-intro-1" && num === 1) {
           	sortingStarsIntro1(num);
