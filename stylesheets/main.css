@@ -37,3 +37,7 @@ h1 {
   background: rgb(69, 69, 69);
   position: absolute;
 }
+
+#myButton1 {
+  display: none;
+}
