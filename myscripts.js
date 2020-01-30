@@ -13,7 +13,7 @@ window.addEventListener('load', function(event) {
 
 // All the names of the paragraph classes
 const parClass = [
-    "welcome1",
+    "welcome1",				//0 (level 0)
     "welcome2",
     "welcome3",
     "welcome4",
@@ -28,7 +28,7 @@ const parClass = [
     "sorting-stars-intro-9",
     "sorting-stars-intro-10",
     "sorting-stars-intro-11",
-    "sorting-stars-numbers",
+    "sorting-stars-numbers", 		//15 (level 1)
     "sorting-stars-numbers-after",
     "sorting-stars-problem",
     "sorting-stars-after"
@@ -179,9 +179,6 @@ function unrender(screenclass) {
 // Process input if needed; (int) curr = index of current paragraph
 function process(curr, num) {
 				//Update level
-  			if(curr === 4 && level < 1){
-        	level = 1;
-        }
         for(let i = 1; i < levelmap.length; i++){
           if(curr === levelmap[i] && level < i){
             level = 1;
@@ -317,17 +314,7 @@ function unrender(screenclass) {
   }
 }
 
-function maprender(lev){
-	unrender(parClass[screen]);
-  unrender("scroll");
-	let maplist = document.getElementsByClassName("map");
-  for (let i=0; i<maplist.length;i++){
-  	if(level >= i-1){
-  		maplist[i].style.display="block";
-    }
-  }
-  render("back");
-}
+
 
 function maptolevel() {
 	unrender("map");
