@@ -50,7 +50,6 @@ const changeClass = document.getElementsByClassName("strip");
 const stripheight = (window.screen.height)/(changeClass.length);
 const width = window.screen.width;
 const changetime = 500; //screen change time in ms
-document.getElementById("debug").innerHTML = stripheight;
 for(let i = 0; i < changeClass.length; i++){
 	changeClass[i].style.width = (width + 100) + 'px';
 	changeClass[i].style.height = stripheight + 'px';
@@ -107,6 +106,7 @@ function maptoscreen(screennum){
     render(parClass[screen]);
     document.getElementById('prev').style.display = "inline-block";
     document.getElementById('next').style.display = "inline-block";
+    document.getElementById("debug").innerHTML = screen;
 	}, changetime);
 }
 
