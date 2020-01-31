@@ -303,7 +303,6 @@ function sortingStarsNumbersAfter() {
 
 function learnSort(type) {
   for (let i=1; i<=3; i++) {
-  	alert("learn-to-sort-"+i);
   	document.getElementsByClassName("learn-to-sort-" + i)[0].innerHTML = type + " " + i;
   }
 }
