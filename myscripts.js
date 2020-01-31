@@ -13,7 +13,7 @@ window.addEventListener('load', function(event) {
 
 // All the names of the paragraph classes
 const parClass = [
-    "welcome1",
+    "welcome1",				//0 (level 0)
     "welcome2",
     "welcome3",
     "welcome4",
@@ -28,7 +28,7 @@ const parClass = [
     "sorting-stars-intro-9",
     "sorting-stars-intro-10",
     "sorting-stars-intro-11",
-    "sorting-stars-numbers",
+    "sorting-stars-numbers", 		//15 (level 1)
     "sorting-stars-numbers-after",
     "learn-to-sort",
     "learn-to-sort-1",
@@ -40,7 +40,7 @@ const parClass = [
 
 const levelmap = [
   0,
-  4
+  15
 ]
 
 let level = 0;
@@ -54,7 +54,6 @@ const changeClass = document.getElementsByClassName("strip");
 const stripheight = (window.screen.height)/(changeClass.length);
 const width = window.screen.width;
 const changetime = 500; //screen change time in ms
-document.getElementById("debug").innerHTML = stripheight;
 for(let i = 0; i < changeClass.length; i++){
 	changeClass[i].style.width = (width + 100) + 'px';
 	changeClass[i].style.height = stripheight + 'px';
@@ -111,6 +110,7 @@ function maptoscreen(screennum){
     render(parClass[screen]);
     document.getElementById('prev').style.display = "inline-block";
     document.getElementById('next').style.display = "inline-block";
+    document.getElementById("debug").innerHTML = screen;
 	}, changetime);
 }
 
@@ -192,13 +192,14 @@ function unrender(screenclass) {
 // Process input if needed; (int) curr = index of current paragraph
 function process(curr, num) {
 				//Update level
-  			if(curr === 4 && level < 1){
-        	level = 1;
-        }
         for(let i = 1; i < levelmap.length; i++){
           if(curr === levelmap[i] && level < i){
             level = 1;
           }
+        }
+	
+	if(curr === -20){
+        	document.getElementById("debug").innerHTML = "Hi! I'm a secret room";
         }
   			// If the next/prev paragraph is "sorting stars after," make the set-up.
           if (parClass[curr] === "sorting-stars-intro-1" && num === 1) {
@@ -338,17 +339,7 @@ function unrender(screenclass) {
   }
 }
 
-function maprender(lev){
-	unrender(parClass[screen]);
-  unrender("scroll");
-	let maplist = document.getElementsByClassName("map");
-  for (let i=0; i<maplist.length;i++){
-  	if(level >= i-1){
-  		maplist[i].style.display="block";
-    }
-  }
-  render("back");
-}
+
 
 function maptolevel() {
 	unrender("map");
