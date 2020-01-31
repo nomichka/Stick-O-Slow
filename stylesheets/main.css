@@ -1,21 +1,14 @@
 body {
-  margin: 25px;
+  margin: 25px 5em;
   background-color: rgb(240, 240, 240);
   font-family: arial, sans-serif;
-  font-size: 14px;
+  font-size: 1em;
   text-align: center;
-}
-
-h1 {
-  font-size: 35px;
-  font-weight: normal;
-  margin-top: 5px;
 }
 
 #myButton1 {
   font-family: Consolas, monospace;
-  display: inline-block;
-  float: center;
+  display: none;
 }
 
 #map {
@@ -26,7 +19,7 @@ h1 {
   display: block;
 }
 
-.map, p, input, textarea, #back {
+.map, p, input, textarea, #back, button.learn-to-sort {
   display: none;
 }
 
@@ -38,6 +31,11 @@ h1 {
   position: absolute;
 }
 
-#myButton1 {
-  display: none;
+button, textarea, input {
+  margin: auto;
+}
+
+textarea {
+  width: 40em;
+  height: 15em;
 }

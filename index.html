@@ -3,11 +3,11 @@
 
 
   <head>
-    <title>Stick O Slow</title>
+    <title>Creating Butterflies</title>
     <link type="text/css" rel="stylesheet" href="stylesheets/main.css" />
     <script type="text/javascript" src="myscripts.js"></script>
   </head>
-  
+
   <body>
     <div id="screenchange">
       <div class="strip"> </div>
@@ -47,7 +47,7 @@
     
     <div id="intro">
       <p class="welcome1">
-        Welcome to the Game of Sticks!
+        Welcome to <b>Creating Butterflies</b>!
       </p>
       <p class="welcome2">
         In this game, you are an All-Powerful Being that has decided to create a More Efficient Universe. To accomplish this task, you'll have to solve problems and stuff using the Power of Programming.</p>
@@ -89,17 +89,33 @@
         Note: I'd recommend creating the numbers through a program, unless you prefer to create <em>1000</em> distinct numbers by hand.
       </p>
       <textarea class="sorting-stars-numbers" type="text" name="sorting-stars-numbers-answer" rows="4" cols="50"></textarea>
+
       <p class="sorting-stars-numbers-after"></p>
+      <p class="learn-to-sort">
+        Now I'll teach you how to sort your stars by size! Pick a sorting method, then click Next.
+      </p>
+        <button class="learn-to-sort" type="button" id="insertion">
+          Insertion sort
+        </button>
+        <button class="learn-to-sort" type="button" id="quick">
+          Quick sort
+        </button>
+        <button class="learn-to-sort" type="button" id="merge">
+          Merge sort
+        </button>
+      <p class="learn-to-sort-1"></p>
+      <p class="learn-to-sort-2"></p>
+      <p class="learn-to-sort-3"></p>
       <p class="sorting-stars-problem">
         Sort the stars into increasing order by volume. The input is below. Each number represents the volume of a star, in km cubed. <br><br>
-      OUTPUT: What is the 421st number?
+        OUTPUT: What is the 421st smallest star?
       </p>
-      <input class="sorting-stars-problem" type="number" name="sorting-stars-answer">
-      <p class ="sorting-stars-problem">
+      <input class="sorting-stars-problem" type="number" name="sorting-stars-answer" align="center">
+      <p class="sorting-stars-problem">
       </p>
       <p class="sorting-stars-after">
       </p>
     </div>
-  
   </body>
+
 </html>
